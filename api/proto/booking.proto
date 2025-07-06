@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package booking;
+option go_package = "booking/pb";
+
+service BookingService {
+  rpc CreateBooking (BookingRequest) returns (BookingResponse);
+  rpc ListBookings (Empty) returns (BookingList);
+}
+
+message BookingRequest {
+  string name = 1;
+  string date = 2;
+}
+
+message BookingResponse {
+  string id = 1;
+  string status = 2;
+}
+
+message BookingList {
+  repeated BookingResponse bookings = 1;
+}
+
+message Empty {}
